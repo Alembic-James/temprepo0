@@ -3,8 +3,12 @@ const SEATTLE_LAT = 47.6062;
 const SEATTLE_LON = -122.3321;
 
 // OpenWeather API configuration
-// Using a demo API key - in production, this should be stored securely
-const API_KEY = 'YOUR_API_KEY_HERE'; // Users need to add their own API key
+// NOTE: In a production environment, the API key should be stored securely on a backend server
+// and requests should be proxied through your own API to avoid exposing the key.
+// For this simple client-side demo, users need to add their own API key.
+// Apply API key restrictions in OpenWeather dashboard (HTTP referrer, IP address limits).
+const DEFAULT_API_KEY = 'YOUR_API_KEY_HERE';
+const API_KEY = DEFAULT_API_KEY; // Users need to replace this with their own API key
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${SEATTLE_LAT}&lon=${SEATTLE_LON}&units=imperial&appid=${API_KEY}`;
 
 // Mock data for demo/testing purposes
@@ -60,7 +64,7 @@ async function fetchWeather() {
     showLoading();
     
     // Check if API key is set
-    if (API_KEY === 'YOUR_API_KEY_HERE') {
+    if (API_KEY === DEFAULT_API_KEY) {
         // Use mock data for demo when API key is not configured
         console.log('Using mock data for demo - add your API key for live data');
         setTimeout(() => {
